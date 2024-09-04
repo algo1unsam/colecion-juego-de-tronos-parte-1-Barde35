@@ -1,35 +1,37 @@
 object daenerys{
-    var maxArt = 2
-    var cantArt = 0
+    var maxArticulos = 2
+    var cantArticulos = 0
     var ciudad = rocadragon
     const property artefactos = []
+    const property historial = []
 
     method aumArt(){
-        maxArt = 4
+        maxArticulos = 4
     }
 
-    method encontrar(valor){
-        if(cantArt < maxArt){
-            artefactos.add(valor)
-            cantArt += 1
+    method encontrar(artefacto){
+        if(cantArticulos < maxArticulos){
+            artefactos.add(artefacto)
+            cantArticulos += 1
         }
+        historial.add(artefacto)
     }
 
     method guardar(){
-        if (cantArt > 0){
-            ciudad.artCasa().addAll(artefactos)
+        if (cantArticulos > 0){
+            ciudad.articulosCasa().addAll(artefactos)
             artefactos.removeAll(artefactos)
-            cantArt = 0
+            cantArticulos = 0
         }
     }
 
-    method cantidades(){
-        //eturn self.artefactos().size + ciudad.artCasa().size
+    method cualTenemos(elemento){
+        return self.posesiones().contain(elemento)
     }
 
-    method arteTotales(){
-        self.cantidades()
-        return ciudad.artCasa() + self.artefactos()
+
+    method posesiones(){
+        return ciudad.articulosCasa() + self.artefactos()
     }
 }
 
@@ -46,7 +48,7 @@ object armaduraAcero{
 }
 
 object rocadragon{
-    const property artCasa = []
+    const property articulosCasa = []
 }
 
 /*
